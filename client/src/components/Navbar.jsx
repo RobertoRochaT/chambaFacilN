@@ -14,7 +14,7 @@ const Navbar = () => {
   const handleChatNavigation = () => {
     const userId = user?.id
 
-    const chatUrl = `http://localhost:5174/chat?userId=${userId}`;
+    const chatUrl = `${import.meta.env.VITE_CHAT_URL}/chat?userId=${userId}`;
     window.location.href = chatUrl;
   }
 

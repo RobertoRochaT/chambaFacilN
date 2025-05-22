@@ -4,7 +4,7 @@ import { toast } from "react-toastify";
 import { checkValidSignUpFrom } from "../utils/validate";
 import { PiEye, PiEyeClosedLight } from "react-icons/pi";
 import { useDispatch } from "react-redux";
-import { addAuth } from "../redux/authSlice"; // Adjust the path if your slice is in a different location
+import { addAuth } from "../redux/slices/authSlice"; // Adjust the path if your slice is in a different location
 const SignUp = () => {
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");

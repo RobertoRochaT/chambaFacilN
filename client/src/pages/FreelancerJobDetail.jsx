@@ -176,7 +176,7 @@ const FreelancerJobDetail = () => {
                   console.log("Sending user data to chat:", userDataForChat);
                   
                   // Step 1: First obtain a proper chat token using external signup
-                  const chatAuthResponse = await fetch(`http://localhost:9000/api/auth/external-signup`, {
+                  const chatAuthResponse = await fetch(`${import.meta.env.VITE_BACKEND_CHAT_URL}/api/auth/external-signup`, {
                     method: "POST",
                     headers: {
                       "Content-Type": "application/json"
@@ -191,7 +191,7 @@ const FreelancerJobDetail = () => {
                   }
                   
                   // Step 2: Use the chat token to create a conversation
-                  const chatResponse = await fetch(`http://localhost:9000/api/chat`, {
+                  const chatResponse = await fetch(`${import.meta.env.VITE_BACKEND_CHAT_URL}/api/chat`, {
                     method: "POST",
                     headers: {
                       "Content-Type": "application/json",
@@ -210,7 +210,7 @@ const FreelancerJobDetail = () => {
                   toast.success("Chat creado correctamente");
                   
                   // Step 3: Redirect to chat with the chat ID
-                  window.location.href = `http://localhost:5174/chat?userId=${userData._id}&targetId=${job.freelancerId._id}&chatId=${chatData.data._id}`;
+                  window.location.href = `${import.meta.env.VITE_CHAT_URL}chat?userId=${userData._id}&targetId=${job.freelancerId._id}&chatId=${chatData.data._id}`;
                   
                 } catch (err) {
                   toast.dismiss();

@@ -23,6 +23,50 @@ export const getUserData = async (req, res) => {
 
 }
 
+export const getUserChatData = async (req, res) => {
+  try {
+    const { userId } = req.params;
+    console.log('USER CHAT DATA REQUESTED:', userId);
+    
+    const user = await User.findById(userId);
+    
+    if (!user) {
+      console.error(`User not found with id: ${userId}`);
+      return res.status(404).json({ 
+        success: false, 
+        message: 'User not found' 
+      });
+    }
+    
+    console.log('Found user data:', {
+      id: user._id,
+      name: user.name || `${user.firstName || ''} ${user.lastName || ''}`.trim()
+    });
+    
+    // Format the data to match what the chat app expects
+    const chatUserData = {
+      _id: user._id,
+      firstName: user.firstName || user.name?.split(' ')[0] || '',
+      lastName: user.lastName || user.name?.split(' ').slice(1).join(' ') || '',
+      email: user.email,
+      profileImage: user.profileImage || user.image || '',
+      externalId: user._id.toString()
+    };
+    
+    console.log('Returning formatted user data:', chatUserData);
+    
+    return res.status(200).json({
+      success: true,
+      data: chatUserData
+    });
+  } catch (error) {
+    console.error('Error in getUserChatData:', error);
+    return res.status(500).json({
+      success: false,
+      message: error.message
+    });
+  }
+};
 
 // Apply For Job
 export const applyForJob = async (req, res) => {

@@ -60,7 +60,7 @@ const chambaFacilAuth = async (req, res, next) => {
 
   try {
     // Call the chamba-facil API to get user data
-    const response = await axios.get(`http://localhost:5002/api/users/user/${userId}`);
+    const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL_USRS}/users/user/${userId}`);
     
     if (response.data.success && response.data.data) {
       // Create or update user in chat database

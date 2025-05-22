@@ -29,7 +29,7 @@ const handleChatNavigation = () => {
     console.log("Navigating to chat with ID:", freelancerData._id);
     
     // Use the full API path with /api/ prefix
-    const chatUrl = `http://localhost:5174/chat?freelancerId=${freelancerData._id}`;
+    const chatUrl = `${import.meta.env.VITE_CHAT_URL}/chat?freelancerId=${freelancerData._id}`;
     window.location.href = chatUrl;
   } else {
     console.error("Freelancer data or ID is missing");
