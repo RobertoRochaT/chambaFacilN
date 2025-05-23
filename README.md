@@ -78,3 +78,10 @@ The chat system integrates with the main application through:
 - **Cross-Platform Integration:** Shared database with independent deployment capabilities
 - **Role-Based Access Control:** Different user types with distinct capabilities and interfaces
 
+#### Author
+
+Carlos Roberto Rocha Trejo \
+Email: rochatrejocarlosroberto@gmail.com \
+LinkedIn : https://www.linkedin.com/in/carlosr-rocha/
+
+
